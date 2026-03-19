@@ -5,11 +5,15 @@ export async function GET(){
     const userData = await prisma.user.findMany();
     return NextResponse.json({
         status: 200,
-        message: "Get all uses successfully",
+        message: "Get all users successfully",
         payload: userData,
     })
 }
 
+
+//json have 2 behaviour :
+//convert form javascript object -> json(serialization) client -> server
+//convert from json -> javascript object (deserialization) server -> client
 
 export async function POST(request){
     const {name, email} = await request.json();
@@ -21,8 +25,14 @@ export async function POST(request){
             },
         });
     return NextResponse.json({
-        status: 200,
+        status: 201,
         message: "Add new user successfully",
         payload: addUser,
     })
 }
+
+
+
+
+
+
